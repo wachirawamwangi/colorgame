@@ -12,8 +12,8 @@ var scoreBoard2 = document.getElementById("scoreBoard2");
 
 var scores = box.length
 var totalScore = 0
-scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-scoreBoard.textContent = "Your current Scores are: " + scores
+scoreBoard2.textContent = "Total Scores: " + totalScore
+scoreBoard.textContent = "Current Scores: " + scores
 function generateColor (){
         for (var i = 0; i < box.length; i++){
             box[i].style.background = "rgb(" + getRandomIntInclusive(0, 255) + ", " + getRandomIntInclusive(0, 255) + ", " + getRandomIntInclusive(0, 255)+")"
@@ -21,8 +21,8 @@ function generateColor (){
             head[1].style.backgroundColor = "green";
             head[2].style.backgroundColor = "blue";
             scores = box.length
-            scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-            scoreBoard.textContent = "Your current Scores are: " + scores
+            scoreBoard2.textContent = "Total Scores: " + totalScore
+            scoreBoard.textContent = "Current Scores: " + scores
 
  
             box[i].addEventListener("click",gameButtons) 
@@ -44,14 +44,14 @@ function endGame () {
         if (youLost){
             totalScore = 0
             scores = box.length
-            scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-            scoreBoard.textContent = "Your Current Scores are: " + scores
+            scoreBoard2.textContent = "Total Scores: " + totalScore
+            scoreBoard.textContent = "Current Scores: " + scores
             generateColor();
         } else {
             totalScore = 0
             scores = box.length
-            scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-            scoreBoard.textContent = "Your Current Scores are: " + scores
+            scoreBoard2.textContent = "Total Scores: " + totalScore
+            scoreBoard.textContent = "Current Scores: " + scores
             generateColor();
         }
     } else {    
@@ -59,27 +59,27 @@ function endGame () {
     if (playAgain){
         generateColor();
         scores = box.length
-        scoreBoard.textContent = "Your Current Scores are: " + scores
+        scoreBoard.textContent = "Current Scores: " + scores
     } else {
         if ((scores || totalScore) > 1) {
             var lossScores = confirm("you will loss all scores, continue?")
             if (lossScores){
                 totalScore = 0
                 scores = box.length
-                scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-                scoreBoard.textContent = "Your Current Scores are: " + scores
+                scoreBoard2.textContent = "Total Scores: " + totalScore
+                scoreBoard.textContent = "Current Scores: " + scores
                 generateColor();
             } else {
                 generateColor();
                 scores = box.length
-                scoreBoard.textContent = "Your Current Scores are: " + scores
+                scoreBoard.textContent = "Current Scores: " + scores
             }
         }
         generateColor();
         totalScore = 0;
         scores = box.length
-        scoreBoard.textContent = "Your Current Scores are: " + scores
-        scoreBoard2.textContent = "Your Total Scores are: " + totalScore
+        scoreBoard.textContent = "Current Scores: " + scores
+        scoreBoard2.textContent = "Total Scores: " + totalScore
     }
 }
 }
@@ -99,8 +99,8 @@ easyMode.addEventListener("click", function(){
     hardMode.style.display = "inline";
     totalScore = 0
     scores = box.length
-    scoreBoard2.textContent = "Your Total Scores are: " + totalScore
-    scoreBoard.textContent = "Your Current Scores are: " + scores
+    scoreBoard2.textContent = "Total Scores: " + totalScore
+    scoreBoard.textContent = "Current Scores: " + scores
     this.remove()})
 
 function gameButtons (e){
@@ -114,13 +114,13 @@ function gameButtons (e){
         }
         totalScore += scores
         console.log("current total scores = " + totalScore)
-        scoreBoard2.textContent = "Your Total Scores are: " + totalScore
+        scoreBoard2.textContent = "Total Scores: " + totalScore
         endGame();
     } else {
         this.style.backgroundColor = "white";
         scores -= 2 
-        scoreBoard.textContent = "Your Current Scores are: " + scores
-        scoreBoard2.textContent = "Your Total Scores are: " + totalScore
+        scoreBoard.textContent = "Current Scores: " + scores
+        scoreBoard2.textContent = "Total Scores: " + totalScore
         console.log("current scores = " + scores)
         this.removeEventListener("click",gameButtons)
     }
