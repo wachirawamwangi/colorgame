@@ -31,7 +31,10 @@ cut1 = colorChoice.textContent.replace("rgb(", "").replace(")", "").replace(",",
 console.log(cut1)
 
 for (var i = 0; i<cut1.length; i++){
-    head[i].style.width = (Number(cut1[i])/255)*10 + "rem" 
+    console.log(head[i].parentElement.clientWidth)
+    console.log(head[i].clientWidth)
+    console.log((Number(cut1[i])/255)*head[1].parentNode.clientWidth + "px")
+    head[i].style.width = (Number(cut1[i])/255)*head[1].parentNode.clientWidth + "px"
 }
 
 
