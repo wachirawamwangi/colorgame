@@ -4,6 +4,9 @@ body {
 #majorDiv {
     margin: 3rem auto;
 }
+table {
+    display: inline-block;
+}
 td {
     width: 10rem;
     height: 10rem;
