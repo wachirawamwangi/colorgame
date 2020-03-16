@@ -18,11 +18,11 @@ var scores = box.length
 var totalScore = 0
 scoreBoard2.textContent = "Total: " + totalScore
 scoreBoard.textContent = "Current: " + scores
-for (var i = 0; i< box.length; i++){
-    console.log(box[i].parentNode.clientHeight)
-    box[i].style.lineHeight = box[i].parentNode.clientHeight + "px"
-    console.log(box[i].style.lineHeight)
-}
+// for (var i = 0; i< box.length; i++){
+//     console.log(box[i].parentNode.clientHeight)
+//     box[i].style.lineHeight = box[i].parentNode.clientHeight + "px"
+//     console.log(box[i].style.lineHeight)
+// }
 
 newColors.addEventListener("click", function(){
     generateColor();
@@ -60,8 +60,8 @@ function generateColor (){
             scoreBoard2.textContent = "Total: " + totalScore
             scoreBoard.textContent = "Current: " + scores
             box[i].addEventListener("click",gameButtons)
-            box[i].textContent = ""
-            box[i].classList.remove("contentNone")
+            // box[i].textContent = ""
+            // box[i].classList.remove("contentNone")
         }
         colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor.toUpperCase();
         cut1 = colorChoice.textContent.replace("RGB(", "").replace(")", "").replace(",", "").replace(",", "").split(" ")
@@ -76,14 +76,14 @@ generateColor();
 
 function endGame () {
     if (totalScore < 1){
-        var youLost = confirm("Sorry You have Lost: Right Color Was: " + colorChoice.textContent + " Play again?")
+        var youLost = confirm("Sorry You have Lost, Play again?")
         if (youLost){
             fullReset();
         } else {
             fullReset()
         }
     } else { 
-    var playAgain = confirm("Correct: Right Color Was: " + colorChoice.textContent + " Play again?" )
+    var playAgain = confirm("Correct, Play again?" )
     if (playAgain){
         partialReset();
     } else {
@@ -131,9 +131,9 @@ function gameButtons (e){
         scoreBoard2.textContent = "Total: " + totalScore
         endGame();
     } else {
-        this.innerHTML = this.style.backgroundColor
-        this.classList.add("contentNone")
-        console.log(this.style.lineHeight)
+        // this.innerHTML = this.style.backgroundColor
+        // this.classList.add("contentNone")
+        // console.log(this.style.lineHeight)
         this.style.backgroundColor = "white";
         scores -= 2 
         scoreBoard.textContent = "Current: " + scores
