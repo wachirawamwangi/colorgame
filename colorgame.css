@@ -17,6 +17,7 @@ td {
     background-color: green;
     margin: 0.1rem;
     text-align: center;
+    font-size: calc(6px + 1vw);
 }
 th{
     text-align: flex;
