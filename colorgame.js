@@ -7,6 +7,7 @@ var hardMode = document.getElementById("hardMode")
 var head = document.getElementsByClassName("tHeadSpan")
 var scoreBoard = document.getElementById("scoreBoard");
 var scoreBoard2 = document.getElementById("scoreBoard2");
+var reset = document.getElementById("reset");
 
 
 
@@ -14,17 +15,34 @@ var scores = box.length
 var totalScore = 0
 scoreBoard2.textContent = "Total Scores: " + totalScore
 scoreBoard.textContent = "Current Scores: " + scores
+
+newColors.addEventListener("click", function(){
+    generateColor();
+    for (var i = 0; i < box.length; i++){
+        if (box[i].addEventListener){
+            box[i].removeEventListener("click", gameButtons)
+            box[i].addEventListener("click", gameButtons) 
+        }
+    }
+})
+   
+easyMode.addEventListener("click", function(){
+    hide.remove(); 
+    hardMode.style.display = "inline";
+    fullReset();
+    this.remove()
+})
+reset.addEventListener("click", resetFun)
+
 function generateColor (){
         for (var i = 0; i < box.length; i++){
             box[i].style.background = "rgb(" + getRandomIntInclusive(0, 255) + ", " + getRandomIntInclusive(0, 255) + ", " + getRandomIntInclusive(0, 255)+")"
-            head[0].style.backgroundColor = "red";
-            head[1].style.backgroundColor = "green";
-            head[2].style.backgroundColor = "blue";
+            head[0].style.background = "red"
+            head[1].style.background = "green"
+            head[2].style.background = "blue"
             scores = box.length
             scoreBoard2.textContent = "Total Scores: " + totalScore
             scoreBoard.textContent = "Current Scores: " + scores
-
- 
             box[i].addEventListener("click",gameButtons) 
         }
         colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor
@@ -42,66 +60,43 @@ function endGame () {
     if (totalScore < 1){
         var youLost = confirm("Sorry You have Lost, Play Again?")
         if (youLost){
-            totalScore = 0
-            scores = box.length
-            scoreBoard2.textContent = "Total Scores: " + totalScore
-            scoreBoard.textContent = "Current Scores: " + scores
-            generateColor();
+            fullReset();
         } else {
-            totalScore = 0
-            scores = box.length
-            scoreBoard2.textContent = "Total Scores: " + totalScore
-            scoreBoard.textContent = "Current Scores: " + scores
-            generateColor();
+            fullReset()
         }
-    } else {    
+    } else { 
     var playAgain = confirm("Game Over, Play again?")
     if (playAgain){
-        generateColor();
-        scores = box.length
-        scoreBoard.textContent = "Current Scores: " + scores
+        partialReset();
     } else {
-        if ((scores || totalScore) > 1) {
-            var lossScores = confirm("you will loss all scores, continue?")
-            if (lossScores){
-                totalScore = 0
-                scores = box.length
-                scoreBoard2.textContent = "Total Scores: " + totalScore
-                scoreBoard.textContent = "Current Scores: " + scores
-                generateColor();
-            } else {
-                generateColor();
-                scores = box.length
-                scoreBoard.textContent = "Current Scores: " + scores
-            }
+        if ((totalScore) > 1) {
+            resetFun();
+        } else {
+        fullReset()
         }
-        generateColor();
-        totalScore = 0;
-        scores = box.length
-        scoreBoard.textContent = "Current Scores: " + scores
-        scoreBoard2.textContent = "Total Scores: " + totalScore
     }
 }
+}
+function resetFun () {
+    var lossScores = confirm("You Will Lose All Scores, Continue To Exit?")
+            if (lossScores){
+                fullReset ();
+            } else {
+                partialReset();
+            }
 }
 
-newColors.addEventListener("click", function(){
-    generateColor();
-    for (var i = 0; i < box.length; i++){
-        if (box[i].addEventListener){
-            box[i].removeEventListener("click", gameButtons)
-            box[i].addEventListener("click", gameButtons) 
-        }
-    }
-})   
-easyMode.addEventListener("click", function(){
-    hide.remove(); 
-    generateColor(); 
-    hardMode.style.display = "inline";
+function fullReset () {
     totalScore = 0
+    partialReset();
+}
+
+function partialReset () {
+    generateColor();
     scores = box.length
-    scoreBoard2.textContent = "Total Scores: " + totalScore
     scoreBoard.textContent = "Current Scores: " + scores
-    this.remove()})
+    scoreBoard2.textContent = "Total Scores: " + totalScore
+}
 
 function gameButtons (e){
     if (this.style.backgroundColor == colorChoice.textContent){
@@ -113,7 +108,6 @@ function gameButtons (e){
             }
         }
         totalScore += scores
-        console.log("current total scores = " + totalScore)
         scoreBoard2.textContent = "Total Scores: " + totalScore
         endGame();
     } else {
@@ -121,15 +115,11 @@ function gameButtons (e){
         scores -= 2 
         scoreBoard.textContent = "Current Scores: " + scores
         scoreBoard2.textContent = "Total Scores: " + totalScore
-        console.log("current scores = " + scores)
         this.removeEventListener("click",gameButtons)
     }
     e.stopPropagation();
     e.preventDefault();
 }
-
-
-
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);

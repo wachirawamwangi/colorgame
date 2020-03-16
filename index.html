@@ -5,14 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="colorgame.css">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap" rel="stylesheet"> 
+
 </head>
 <body>
     
     <div id="majorDiv">
-        <div>Scoreboard::<span id="scoreBoard">You Scores</span>::<span id="scoreBoard2">You Scores</span></div>
-        <button id="newColors">New Colors</button>
-        <button id="easyMode"> Easy Mode</button>
-        <a href="javascript:window.location.reload()" id="hardMode" style="display: none;"><button>hardMode</button></a>
+        <div> <div style="width: 100%; text-align: center;font-family: 'Orbitron', sans-serif; font-size: x-large;" >Scoreboard</div> 
+        <div style="display: flex; justify-content: space-between;">    
+            <span id="scoreBoard">You Scores</span>
+            ::
+            <span id="scoreBoard2">You Scores</span></div>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <button id="reset">Reset</button>
+            <button id="newColors">New Colors</button>
+            <button id="easyMode"> Easy Mode</button>
+            <a href="javascript:window.location.reload()" id="hardMode" style="display: none;"><button>hardMode</button></a>
+        </div>
         <div id="colorChoice">RGB Color Here</div>
         <table>
             <thead>

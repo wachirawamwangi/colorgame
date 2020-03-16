@@ -39,3 +39,15 @@ th:nth-of-type(2) span {
 th:nth-of-type(3) span {
     background-color: blue;
 }
+#scoreBoard {
+    /* font-family: 'Black Ops One', cursive; */
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Orbitron', sans-serif;
+    font-size: x-large;
+}
+#scoreBoard2 {
+    /* font-family: 'Black Ops One', cursive; */
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Orbitron', sans-serif;
+    font-size: x-large;
+}
