@@ -1,4 +1,5 @@
 var box = document.getElementsByTagName("td");
+var boxAfter = document.getElementsByTagName("td::after");
 var colorChoice = document.getElementById("colorChoice");
 var newColors = document.getElementById("newColors");
 var easyMode = document.getElementById("easyMode")
@@ -17,7 +18,11 @@ var scores = box.length
 var totalScore = 0
 scoreBoard2.textContent = "Total: " + totalScore
 scoreBoard.textContent = "Current: " + scores
-
+for (var i = 0; i< box.length; i++){
+    console.log(box[i].parentNode.clientHeight)
+    box[i].style.lineHeight = box[i].parentNode.clientHeight + "px"
+    console.log(box[i].style.lineHeight)
+}
 
 newColors.addEventListener("click", function(){
     generateColor();
@@ -54,10 +59,12 @@ function generateColor (){
             scores = box.length
             scoreBoard2.textContent = "Total: " + totalScore
             scoreBoard.textContent = "Current: " + scores
-            box[i].addEventListener("click",gameButtons) 
+            box[i].addEventListener("click",gameButtons)
+            box[i].textContent = ""
+            box[i].classList.remove("contentNone")
         }
         colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor.toUpperCase();
-        cut1 = colorChoice.textContent.replace("rgb(", "").replace(")", "").replace(",", "").replace(",", "").split(" ")
+        cut1 = colorChoice.textContent.replace("RGB(", "").replace(")", "").replace(",", "").replace(",", "").split(" ")
 
 
         for (var i = 0; i<cut1.length; i++){
@@ -69,14 +76,14 @@ generateColor();
 
 function endGame () {
     if (totalScore < 1){
-        var youLost = confirm("Sorry You have Lost, Play Again?")
+        var youLost = confirm("Sorry You have Lost: Right Color Was: " + colorChoice.textContent + " Play again?")
         if (youLost){
             fullReset();
         } else {
             fullReset()
         }
     } else { 
-    var playAgain = confirm("Game Over, Play again?")
+    var playAgain = confirm("Correct: Right Color Was: " + colorChoice.textContent + " Play again?" )
     if (playAgain){
         partialReset();
     } else {
@@ -112,7 +119,7 @@ function partialReset () {
 }
 
 function gameButtons (e){
-    if (this.style.backgroundColor == colorChoice.textContent){
+    if (this.style.backgroundColor == colorChoice.textContent.toLowerCase()){
         for(var i = 0; i < box.length; i++){
             box[i].style.backgroundColor = this.style.backgroundColor; 
             for(var j = 0; j < head.length; j++){
@@ -124,6 +131,9 @@ function gameButtons (e){
         scoreBoard2.textContent = "Total: " + totalScore
         endGame();
     } else {
+        this.innerHTML = this.style.backgroundColor
+        this.classList.add("contentNone")
+        console.log(this.style.lineHeight)
         this.style.backgroundColor = "white";
         scores -= 2 
         scoreBoard.textContent = "Current: " + scores

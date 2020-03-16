@@ -1,19 +1,22 @@
 body {
     display: flex;
+    height: 10vh;
 }
 table {
     table-layout: fixed;
     width: 100%;
     max-width: 40rem;
+    max-height: 100vh;
   }
 #majorDiv {
-    margin: 3rem auto;
+    margin: auto;
 }
 td {
     max-width: 10rem;
     height: auto;
     background-color: green;
     margin: 0.1rem;
+    text-align: center;
 }
 th{
     text-align: flex;
@@ -23,6 +26,11 @@ th{
 }
 td:after {
     content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+td.contentNone::after {
+    content: none;
     display: block;
     padding-bottom: 100%;
 }
