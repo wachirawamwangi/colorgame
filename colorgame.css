@@ -40,14 +40,17 @@ th:nth-of-type(3) span {
     background-color: blue;
 }
 #scoreBoard {
-    /* font-family: 'Black Ops One', cursive; */
+    font-family: 'Black Ops One', cursive;
     /* font-family: 'Press Start 2P', cursive; */
-    font-family: 'Orbitron', sans-serif;
-    font-size: x-large;
+    /* font-family: 'Orbitron', sans-serif; */
+    font-size: calc(12px + 1vw);
 }
 #scoreBoard2 {
-    /* font-family: 'Black Ops One', cursive; */
+    font-family: 'Black Ops One', cursive;
     /* font-family: 'Press Start 2P', cursive; */
-    font-family: 'Orbitron', sans-serif;
-    font-size: x-large;
+    /* font-family: 'Orbitron', sans-serif; */
+    font-size: calc(12px + 1vw);
+}
+.newColorHide {
+    display: none;
 }

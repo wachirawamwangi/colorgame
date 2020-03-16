@@ -11,10 +11,13 @@ var reset = document.getElementById("reset");
 
 
 
+
+var newColorCounter = 0
 var scores = box.length
 var totalScore = 0
-scoreBoard2.textContent = "Total Scores: " + totalScore
-scoreBoard.textContent = "Current Scores: " + scores
+scoreBoard2.textContent = "Total: " + totalScore
+scoreBoard.textContent = "Current: " + scores
+
 
 newColors.addEventListener("click", function(){
     generateColor();
@@ -24,6 +27,14 @@ newColors.addEventListener("click", function(){
             box[i].addEventListener("click", gameButtons) 
         }
     }
+    newColorCounter += 1
+    console.log("newColors")
+    if (newColorCounter == 3) {
+        this.classList.add("newColorHide")
+    } else {
+        this.classList.remove("newColorHide")
+    }
+    console.log(newColorCounter)
 })
    
 easyMode.addEventListener("click", function(){
@@ -41,11 +52,11 @@ function generateColor (){
             head[1].style.background = "green"
             head[2].style.background = "blue"
             scores = box.length
-            scoreBoard2.textContent = "Total Scores: " + totalScore
-            scoreBoard.textContent = "Current Scores: " + scores
+            scoreBoard2.textContent = "Total: " + totalScore
+            scoreBoard.textContent = "Current: " + scores
             box[i].addEventListener("click",gameButtons) 
         }
-        colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor
+        colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor.toUpperCase();
         cut1 = colorChoice.textContent.replace("rgb(", "").replace(")", "").replace(",", "").replace(",", "").split(" ")
 
 
@@ -93,9 +104,11 @@ function fullReset () {
 
 function partialReset () {
     generateColor();
+    newColorCounter = 0
+    newColors.classList.remove("newColorHide")
     scores = box.length
-    scoreBoard.textContent = "Current Scores: " + scores
-    scoreBoard2.textContent = "Total Scores: " + totalScore
+    scoreBoard.textContent = "Current: " + scores
+    scoreBoard2.textContent = "Total: " + totalScore
 }
 
 function gameButtons (e){
@@ -108,13 +121,13 @@ function gameButtons (e){
             }
         }
         totalScore += scores
-        scoreBoard2.textContent = "Total Scores: " + totalScore
+        scoreBoard2.textContent = "Total: " + totalScore
         endGame();
     } else {
         this.style.backgroundColor = "white";
         scores -= 2 
-        scoreBoard.textContent = "Current Scores: " + scores
-        scoreBoard2.textContent = "Total Scores: " + totalScore
+        scoreBoard.textContent = "Current: " + scores
+        scoreBoard2.textContent = "Total: " + totalScore
         this.removeEventListener("click",gameButtons)
     }
     e.stopPropagation();
