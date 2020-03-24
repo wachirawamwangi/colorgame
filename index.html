@@ -23,8 +23,15 @@
             <button id="newColors">New Colors</button>
             <button id="easyMode"> Easy Mode</button>
             <a href="javascript:window.location.reload()" id="hardMode" style="display: none;"><button>hardMode</button></a>
+            <!-- this reloads the entire game -->
         </div>
-        <div id="colorChoice" style="margin-bottom: 1rem; text-align: center; font-size: calc(11px + 1vw); font-family: 'Orbitron', sans-serif;">RGB Color Here</div>
+        <div style="display: flex; justify-content:space-between">
+            <div id="colorChoice" style="margin-bottom: 1rem; text-align: center; font-size: calc(11px + 1vw); font-family: 'Orbitron', sans-serif;">
+                RGB Color Here</div>
+            <div id="thisColor">
+                This Color
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>

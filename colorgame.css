@@ -1,6 +1,6 @@
 body {
     display: flex;
-    height: 10vh;
+    height: 100%;
 }
 table {
     table-layout: fixed;
@@ -17,7 +17,7 @@ td {
     background-color: green;
     margin: 0.1rem;
     text-align: center;
-    font-size: calc(6px + 1vw);
+    font-size: calc(5px + 1vw);
 }
 th{
     text-align: flex;
@@ -31,8 +31,6 @@ td:after {
     padding-bottom: 100%;
 }
 td.contentNone::after {
-    content: none;
-    display: block;
     padding-bottom: 100%;
 }
 .tHeadSpan {
@@ -62,4 +60,7 @@ th:nth-of-type(3) span {
 }
 .newColorHide {
     display: none;
+}
+#thisColor {
+    font-size: calc(7px + 1vw);
 }

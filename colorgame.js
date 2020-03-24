@@ -9,6 +9,7 @@ var head = document.getElementsByClassName("tHeadSpan")
 var scoreBoard = document.getElementById("scoreBoard");
 var scoreBoard2 = document.getElementById("scoreBoard2");
 var reset = document.getElementById("reset");
+var thisColor = document.getElementById("thisColor");
 
 
 
@@ -18,11 +19,7 @@ var scores = box.length
 var totalScore = 0
 scoreBoard2.textContent = "Total: " + totalScore
 scoreBoard.textContent = "Current: " + scores
-// for (var i = 0; i< box.length; i++){
-//     console.log(box[i].parentNode.clientHeight)
-//     box[i].style.lineHeight = box[i].parentNode.clientHeight + "px"
-//     console.log(box[i].style.lineHeight)
-// }
+
 
 newColors.addEventListener("click", function(){
     generateColor();
@@ -60,10 +57,11 @@ function generateColor (){
             scoreBoard2.textContent = "Total: " + totalScore
             scoreBoard.textContent = "Current: " + scores
             box[i].addEventListener("click",gameButtons)
-            // box[i].textContent = ""
-            // box[i].classList.remove("contentNone")
+            box[i].textContent = ""
+            box[i].classList.remove("contentNone")
         }
         colorChoice.textContent = box[getRandomIntInclusive(0, box.length-1)].style.backgroundColor.toUpperCase();
+        thisColor.textContent = colorChoice.textContent
         cut1 = colorChoice.textContent.replace("RGB(", "").replace(")", "").replace(",", "").replace(",", "").split(" ")
 
 
@@ -131,9 +129,7 @@ function gameButtons (e){
         scoreBoard2.textContent = "Total: " + totalScore
         endGame();
     } else {
-        // this.innerHTML = this.style.backgroundColor
-        // this.classList.add("contentNone")
-        // console.log(this.style.lineHeight)
+        thisColor.textContent = this.style.backgroundColor.toUpperCase();
         this.style.backgroundColor = "white";
         scores -= 2 
         scoreBoard.textContent = "Current: " + scores
